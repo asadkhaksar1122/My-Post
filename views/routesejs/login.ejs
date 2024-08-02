@@ -1,0 +1,27 @@
+
+<% layout('layout/boilerplate.ejs') -%>
+<body>
+    <form action="/login" id="loginform" method="post"><div style="width: 80%; margin: auto;">
+      <div class="mb-3  row-4">
+    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" name="username" class="form-control-plaintext" id="username" placeholder="Enter Username">
+      <p id="usernamep" style="color: red;"></p>
+    </div>
+  </div>
+  <div class="mb-3 row-4">
+    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+      <p id="passwordp" style="color: red;"></p>
+    </div>
+      <ol class="breadcrumb">
+    <li class="breadcrumb-item">Don't have any account? <a href="/signup">Sign up</a></li>
+   
+  </ol>
+  </div>
+<button class="btn btn-outline-success">login</button>
+</div></form>
+
+</body>
+<script src="/js/login.js"></script>

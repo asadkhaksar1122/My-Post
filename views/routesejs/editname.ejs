@@ -1,0 +1,59 @@
+<% layout('layout/boilerplate.ejs') -%>
+<body>
+    <form action="/editname" id="form" method="post" style="width: 80%; margin: auto;" novalidate>
+     <div class="mb-3  row-4">
+    <label for="firstname" class="col-sm-2  col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" required value="<%= oneuser.firstname%>"  name="firstname" class="form-control-plaintext" id="firstname" placeholder="Enter First Name">
+      <p style="color: red;" id="firstnamep"></p>
+    </div>
+       <div class="mb-3  row-4">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Second Name</label>
+    <div class="col-sm-10">
+      <input type="text" required value="<%= oneuser.secondname%>" name="secondname" class="form-control-plaintext" id="secondname" placeholder="Enter secondname">
+      <p style="color: red;" id="secondnamep"></p>
+    </div>
+    <button class="btn btn-success">Change name</button></form>
+    <script>
+        let firstname=document.getElementById("firstname")
+        let firstnamep=document.getElementById("firstnamep")
+        let secondname= document.getElementById("secondname")
+        let secondnamep= document.getElementById("secondnamep")
+        let form= document.getElementById("form")
+        form.addEventListener("submit",function (e) {
+            let submitbol=true;
+            if(!firstname.value){
+                firstnamep.textContent="First Name should not be empty"
+                firstname.style.outline="2px solid red"
+                submitbol=false
+            }
+           else if(firstname.value.length<3){
+                firstnamep.textContent="First Name should not be less then three character"
+                firstname.style.outline="2px solid red"
+                submitbol=false
+            }else{
+                  firstnamep.textContent=""
+                firstname.style.outline="none"
+                
+            }
+            if (!secondname.value) {
+               secondnamep.textContent="Second Name should not be empty"
+                secondname.style.outline="2px solid red"
+                submitbol=false   
+            }
+           else if (secondname.value.length<3) {
+               secondnamep.textContent="Second Name should not be less then three character"
+                secondname.style.outline="2px solid red"
+                submitbol=false   
+            }
+            else{
+                  secondnamep.textContent=""
+                secondname.style.outline=""
+            }
+            if (!submitbol) {
+                e.preventDefault()
+            }
+        })
+
+    </script>
+</body>

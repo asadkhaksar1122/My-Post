@@ -1,0 +1,83 @@
+
+<% layout('layout/boilerplate.ejs') -%>
+<head>
+  <style>
+   .icon{
+    position: absolute;
+    left: 75%;
+    margin-top: -27px;
+   }
+   
+ 
+  </style>
+</head>
+<body>
+    <form id="signup-form"  action="/signup" method="post" novalidate enctype="multipart/form-data"><div style="width: 80%; margin: auto;">
+           <div style="width: 100%;">
+    <label style="display: block; width: 100%;" for="profile" class="col-sm-2 col-form-label mx-auto">
+        <img src="/profile/profile.jpg" id="profilepreview" class="img-fluid rounded-start mx-auto" style="display: block; margin: auto; width: 200px; height: 200px;" alt="...">
+        <p style="text-align: center;">Click on image or here to add profile image</p>
+  </label>
+           <div class="mb-3  row-4">
+    <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" required  name="firstname" class="form-control-plaintext" id="firstname" placeholder="Enter First Name">
+      <p style="color: red;" id="firstnamep"></p>
+    </div>
+         <div class="mb-3  row-4">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Second Name</label>
+    <div class="col-sm-10">
+      <input type="text" required  name="secondname" class="form-control-plaintext" id="secondname" placeholder="Enter secondname">
+      <p style="color: red;" id="secondnamep"></p>
+    </div>
+         <div class="mb-3  row-4">
+    <label for="dateofbirth" class="col-sm-2 col-form-label">Date of Birth</label>
+    <div class="col-sm-10">
+      <input type="date" required  name="dateofbirth" class="form-control-plaintext" id="dateofbirth" placeholder="Enter Date of Birth">
+      <p style="color: red;" id="dateofbirthp"></p>
+    </div>
+    <div class="mb-3  row-4">
+  <label for="username"  class="col-sm-2 col-form-label">Username</label>
+  <div class="col-sm-10">
+    <input type="text" required minlength="3" name="username" class="form-control-plaintext" id="username" placeholder="Enter Username">
+  <p style="color: red;" class="userp"></p>
+  </div>
+         <div class="mb-3  row-4" style="display: none;">
+    <label for="profile" class="col-sm-2 col-form-label">Upload your profile picture</label>
+    <div class="col-sm-10">
+      <input type="file" required  name="profile" class="form-control-plaintext" id="profile" >
+      <p style="color: red;" id="profilep"></p>
+    </div>
+</div>
+  </div>
+      <div class="mb-3  row-4">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" required  name="email" class="form-control-plaintext" id="email" placeholder="Enter Email">
+      <p style="color: red;" class="nonvalid-email"></p>
+    </div>
+  </div>
+  <div class="mb-3 row-4">
+    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10" id="password-div">
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password"><i class="fa-solid fa-eye-slash icon"id="passwordeye"></i>
+      <p style="color: red;" id="passwordp"></p>
+    </div>
+  <div class="mb-3 row-4">
+    <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
+    <div class="col-sm-10"id="confirmpassword-div">
+      <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password"><i class="fa-solid fa-eye-slash icon" id="confirmpasswordeye" ></i>
+      <p style="color: red;" id="confirmpasswordp"></p>
+    </div>
+    
+  </div>
+  
+</div>
+ <ol class="breadcrumb">
+    <li class="breadcrumb-item">Already have account? <a href="/login">login</a></li>
+  </ol>
+<button class="btn btn-outline-success">Sign up</button>
+</form>
+
+</body>
+<script src="/js/signup.js"></script>

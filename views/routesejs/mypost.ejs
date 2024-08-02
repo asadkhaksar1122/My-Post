@@ -1,0 +1,74 @@
+<% layout('layout/boilerplate.ejs') -%>
+<body>
+  <h3 class="mt-5 " style="text-align: center;">Your Post</h3>
+  <%for (const note of user.note) {%>
+  <div class="col-md-6 mb-4" style="width: 100%">
+        <!-- Set the column width to 6 to divide into two columns -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <!-- Align items vertically in the center -->
+              <div class="col-md-2">
+                <!-- Column for the picture -->
+                <img
+                  src="/profile/<%= user.profile %>"
+                  class="rounded-circle"
+                  style="width: 100px; height: 100px; vertical-align: middle"
+                  alt="Profile Picture"
+                />
+                  <h5 class="card-title title">
+                  <%=   user.firstname %> <%= user.secondname %>
+                </h5>
+                <h6
+                  class="card-subtitle mb-2 text-muted username"
+                  style="vertical-align: middle"
+                >
+                  <%= user.username %>
+                </h6>
+              </div>
+              <div class="col-md-10">
+                <!-- Column for name, username, email, post title, and description -->
+              
+                <h6 class="card-subtitle mb-2 mt-5 text-muted">
+                  <strong><b><%= note.title %></b></strong>
+                </h6>
+                <p class="card-text description"><%= note.description %></p>
+            
+     <p class="card-text date">
+  Date: <%= new Date(note.date).toLocaleString('en-US', {
+     day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+  }) %>
+</p>
+
+
+                <% if (currentuser && currentuser._id.equals(note.owner[0])) { %>
+                <div class="btn-group">
+                  <a
+                    href="/delete/<%= note.id %>"
+                    class="btn btn-danger"
+                    data-note-id="<%= note.id %>"
+                    >Delete</a
+                  >
+                  <a
+                    href="/edit/<%= note.id %>"
+                    class="btn btn-success"
+                    data-note-id="<%= note.id %>"
+                    >Edit</a
+                  >
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% } %>
+</body>
+
+<script src="/js/home.js"></script>

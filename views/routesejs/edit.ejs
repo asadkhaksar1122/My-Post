@@ -1,0 +1,35 @@
+<% layout('layout/boilerplate.ejs') -%>
+<body>
+   <div class="notes"><form action="/edit/<%= note.id %>" method="post">
+<div class="mb-3 mx-3">
+  <label for="title" class="form-label">Notes Title</label>
+  <input type="text" class="form-control" value="<%= note.title %>" name="title" id="title" placeholder="Enter your notes Title">
+    <% if (error && error.errors && error.errors.title && error.errors.title.message) {  %>
+    <p> <%=  error.errors.title.message %></p>
+  <%} %>
+  
+</div>
+<div class="mb-3 mx-3">
+  <label for="area" class="form-label">Enter the Notes Discription</label>
+  
+  
+  <textarea class="form-control" name="description" placeholder="Discription" id="area" rows="3"> <%= note.description %></textarea>
+  <% if (error && error.errors && error.errors.description && error.errors.description.message) {  %>
+    <p style="color: red;"> <%=  error.errors.description.message %></p>
+  <%} %>
+</div>
+<button type="submit" class="btn btn-primary mx-3">Update Note</button>
+<select style="display: inline-block; width: 40%; " id="select" class="form-select" aria-label="Default select example">
+  <optgroup label="what do you want to do with group">
+  <option value="uppercase">Convert into uppercase</option>
+  <option value="lowercase">Convert into lowercase</option>
+
+  <option value="extraspaces" selected >Remove the extraspaces</option>
+  <option value="firstletter" >Convert the First letter into capital</option>
+  </optgroup>
+</select>
+</form>
+</div>
+</body>
+<script src="/js/home.js"></script>
+</html>

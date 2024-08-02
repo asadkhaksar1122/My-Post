@@ -1,0 +1,28 @@
+<% layout('layout/boilerplate.ejs') -%>
+<div class="notes"><form action="/new" method="post">
+<div class="mb-3 mx-3" id="note">
+  <label for="title" class="form-label">Notes Title</label>
+  <input type="text" class="form-control" name="title" id="title" placeholder="Enter your notes Title">
+   <% if (error && error.errors && error.errors.title && error.errors.title.message) {  %>
+    <p style="color: red;"> <%=  error.errors.title.message %></p>
+  <%} %>
+</div>
+<div class="mb-3 mx-3">
+  <label for="area" class="form-label">Enter the Notes Desccription</label>
+  <textarea class="form-control" name="description" placeholder="description" id="area" rows="3"></textarea>
+   <% if (error && error.errors && error.errors.description && error.errors.description.message) {  %>
+    <p style="color: red;"> <%=  error.errors.description.message %></p>
+  <%} %>
+</div>
+<button type="submit"  class="btn btn-primary mx-3">Add Note</button>
+<select style="display: inline-block; width: 30%;" id="select" class="form-select" aria-label="Default select example">
+  <optgroup label="what do you want to do with text">
+  <option value="uppercase">Convert into uppercase</option>
+  <option value="lowercase">Convert into lowercase</option>
+  <option value="extraspaces">Remove the extraspaces</option>
+  <option value="firstletter" >Convert the First letter into capital</option>
+  </optgroup>
+</select>
+</form>
+</div>
+<script src="/js/home.js"></script>
